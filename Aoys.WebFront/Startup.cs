@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Serilog;
 
 namespace Aoys.WebFront
 {
@@ -28,6 +29,7 @@ namespace Aoys.WebFront
         public void ConfigureServices(IServiceCollection services)
         {
             services.Configure<WechatSettings>(Configuration.GetSection("WechatSettings"));
+           
             services.AddControllers();
         }
 
@@ -39,11 +41,11 @@ namespace Aoys.WebFront
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
