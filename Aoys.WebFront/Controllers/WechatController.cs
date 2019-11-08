@@ -18,11 +18,11 @@ namespace Aoys.WebFront.Controllers
     public class WechatController : ControllerBase
     {
         private readonly WechatSettings wechatSettings;
-        private readonly ILogger<WechatController> _log;
-        public WechatController(IOptions<WechatSettings> options, ILogger<WechatController> log)
+        private readonly ILogger _logger;
+        public WechatController(IOptions<WechatSettings> options, ILoggerFactory logFactory)
         {
             wechatSettings = options.Value;
-            _log = log;
+            _logger = logFactory.CreateLogger<WechatController>();
         }
         /// <summary>
         /// 微信后台验证地址（使用Get），微信后台的“接口配置信息”的Url填写如：http://weixin.senparc.com/weixin
@@ -30,7 +30,7 @@ namespace Aoys.WebFront.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery]PostModel postModel, [FromQuery]string echostr)
         {
-            _log.LogDebug($"有请求进入,{Request.QueryString}");
+            _logger.LogDebug($"有请求进入,{Request.QueryString}");
             if (CheckSignature.Check(postModel.Signature, postModel.Timestamp, postModel.Nonce, wechatSettings.Token))
             {
                 return Content(echostr); //返回随机字符串则表示验证通过
