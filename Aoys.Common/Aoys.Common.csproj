@@ -1,0 +1,9 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <Authors>aoys4jc</Authors>
+    <Company>Aoys</Company>
+  </PropertyGroup>
+
+</Project>

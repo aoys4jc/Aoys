@@ -15,14 +15,12 @@ namespace Aoys.WebFront.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class WechatController : ControllerBase
+    public class WechatController : ApiBaseController
     {
         private readonly WechatSettings wechatSettings;
-        private readonly ILogger _logger;
-        public WechatController(IOptions<WechatSettings> options, ILoggerFactory logFactory)
+        public WechatController(IOptions<WechatSettings> options, ILoggerFactory logFactory):base(logFactory)
         {
             wechatSettings = options.Value;
-            _logger = logFactory.CreateLogger<WechatController>();
         }
         /// <summary>
         /// 微信后台验证地址（使用Get），微信后台的“接口配置信息”的Url填写如：http://weixin.senparc.com/weixin
