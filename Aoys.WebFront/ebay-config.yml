@@ -1,0 +1,16 @@
+name: ebay-config
+
+# OAuth Access Tokens - https://developer.ebay.com/api-docs/static/oauth-tokens.html
+
+# UPDATE the values in this file, before running the tests
+api.sandbox.ebay.com:
+    appid: -Skyee360-SBX-3b1d2c993-c5459671
+    certid: SBX-b1d2c993ebbf-9295-44ac-a3ea-b45c
+    devid: ab199682-1663-489a-84a4-239cc3be90ad
+    redirecturi: https://m.aoys.info/ebay/exchangecode
+
+api.ebay.com:
+    appid: -Skyee360-PRD-e8bba853c-d6b83088
+    certid: PRD-8bba853c0366-d517-4c25-b747-a119
+    devid: ab199682-1663-489a-84a4-239cc3be90ad
+    redirecturi: https://m.aoys.info/ebay/exchangecode
