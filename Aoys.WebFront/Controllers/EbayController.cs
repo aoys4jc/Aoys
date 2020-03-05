@@ -11,7 +11,7 @@ using Newtonsoft.Json;
 
 namespace Aoys.WebFront.Controllers
 {
-    [Route("[controller]")]
+    [Route("[controller]/[action]")]
     [ApiController]
     public class EbayController : ApiBaseController
     {
@@ -55,7 +55,7 @@ namespace Aoys.WebFront.Controllers
 "https://api.ebay.com/oauth/api_scope/sell.payment.dispute",
 "https://api.ebay.com/oauth/api_scope/sell.item"
             };
-            var authorizationUrl = _oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.SANDBOX, scopes, "");
+            var authorizationUrl = _oAuth2Api.GenerateUserAuthorizationUrl(OAuthEnvironment.SANDBOX, scopes, "123456");
 
             return Redirect(authorizationUrl);
 
@@ -66,7 +66,7 @@ namespace Aoys.WebFront.Controllers
         /// Ebay用户授权返回
         /// </summary>
         [HttpGet]
-        public IActionResult ExchangeCode([FromQuery]string code, [FromQuery]int expires_in)
+        public IActionResult ExchangeCode([FromQuery]string code, [FromQuery]int expires_in, [FromQuery]string state)
         {
             _logger.LogDebug($"有请求进入,{Request.QueryString}");
             var oAuthResponse = _oAuth2Api.ExchangeCodeForAccessToken(OAuthEnvironment.SANDBOX, code);
